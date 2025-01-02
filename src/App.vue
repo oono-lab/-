@@ -44,6 +44,7 @@ export default {
       stepIndex: 0,
       placeholderText: "メッセージを入力...",
       awaitingAnswer: false,
+      index_data: 0,
     };
   },
   methods: {
@@ -58,6 +59,7 @@ export default {
             message: userMessage,
             stepIndex: this.stepIndex,
             awaitingAnswer: this.awaitingAnswer,
+            index_data: this.index_data,
             
           });
 
@@ -65,6 +67,7 @@ export default {
           const isCorrect = response.data.correct;
           const explanation = response.data.explanation;
           const Isfirst = response.data.isFirstMessage;
+          const IndexData = response.data.index_data;
 
             if (this.awaitingAnswer) {
               if (isCorrect) {
@@ -78,7 +81,10 @@ export default {
             }
           } else {
             this.messages.push({ text: botResponse, isUser: false });
-            if(Isfirst) this.awaitingAnswer = true;
+            if(Isfirst) {
+              this.awaitingAnswer = true;
+              this.index_data = IndexData;
+            }
             
           }
     
