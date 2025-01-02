@@ -81,10 +81,7 @@ export default {
             }
           } else {
             this.messages.push({ text: botResponse, isUser: false });
-            if(Isfirst) {
-              this.awaitingAnswer = true;
-              this.index_data = IndexData;
-            }
+            if(Isfirst) this.awaitingAnswer = true;
             
           }
     
